@@ -65,6 +65,9 @@ class CardTag(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.card.questionCard} - {self.tag.name}'
+
     class Meta:
         unique_together = ('card', 'tag')
         db_table = 'card_tag'

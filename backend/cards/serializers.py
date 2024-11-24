@@ -17,6 +17,10 @@ class TagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CardTagSerializer(serializers.ModelSerializer):
+    card_question = serializers.CharField(source='card.questionCard', read_only=True)
+    tag_name = serializers.CharField(source='tag.name', read_only=True)
+
     class Meta:
         model = CardTag
         fields = '__all__'
+        extra_fields = ['card_question', 'tag_name']
