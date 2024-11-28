@@ -7,9 +7,12 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CardSerializer(serializers.ModelSerializer):
+    name_category = serializers.CharField(source='category.name', read_only=True)
+
     class Meta:
         model = Card
         fields = '__all__'
+        extra_fields = ['name_category']
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
